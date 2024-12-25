@@ -5,7 +5,8 @@ import java.util.*;
 
 public class UserRepository {
 
-    List<User> users = Arrays.asList(
+    Scanner scanner = new Scanner(System.in);
+    private final List<User> users = Arrays.asList(
             new User(1,"Jonh","johndoe@mail.com"),
             new User(2,"Sarah","sarahdoe@mail.com"),
             new User(3,"Jamar","jamardoe@mail.com"),
@@ -14,8 +15,6 @@ public class UserRepository {
 
 
     public Optional<User> findUserById() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Type user ID: ");
         int typedId = scanner.nextInt();
 
@@ -31,10 +30,14 @@ public class UserRepository {
     }
 
     public Optional<List<User>> findAllUsers() {
-        return Optional.ofNullable(users);
+        return Optional.of(users);
     }
 
-    public void displayResult(Optional<User> result) {
-        System.out.println("Result : " + result);
+    public void displayResult(User result) {
+        if (result != null) {
+            System.out.println("Result: " + result);
+        } else {
+            System.out.println("User not found");
+        }
     }
 }
