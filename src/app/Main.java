@@ -8,10 +8,12 @@ public class Main {
         System.out.println("=== Find user by ID ===");
         repository.displayResult(repository.findUserById().orElse(null));
 
-        System.out.println("=== Find user by email ===");
+        System.out.println("=== Find user by email \"sarahdoe@mail.com \" ===");
         repository.displayResult(repository.findUserByEmail("sarahdoe@mail.com").orElse(null));
 
         System.out.println("=== List of all users ===");
-        repository.findAllUsers().ifPresent(users -> users.forEach(System.out::println));
+        repository.findAllUsers().ifPresent(users -> {
+            users.forEach(System.out::println);
+        });
     }
 }
